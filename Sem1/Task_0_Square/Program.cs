@@ -2,6 +2,6 @@
 
 Console.Write("Enter a number: ");
 double number = double.Parse(Console.ReadLine());
-double number_square = number*number;
-Console.Write("The number in square is " + number_square);
-
+double number_square = Math.Pow(number, 2);
+Console.Write("Your number is " + number);
+Console.Write("The square of the number is " + number_square);
