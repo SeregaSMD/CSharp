@@ -1,11 +1,11 @@
-﻿Console.Write("Введите число: ");
+﻿Console.Write("Enter a number: ");
 int number = int.Parse(Console.ReadLine());
 
 if (number%7 == 0 && number%23 == 0)
 {
-    Console.WriteLine($"Введенное число кратно 7 и 23.");
+    Console.WriteLine("Your number is even to 7 и 23.");
 }
 else
 {
-    Console.WriteLine($"Введенное число не кратно одновременно 7 и 23.");
+    Console.WriteLine("Your number isn't even to 7 и 23.");
 }
