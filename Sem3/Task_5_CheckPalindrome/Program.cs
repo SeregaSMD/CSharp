@@ -17,7 +17,7 @@ while (digits > 1)
     int lnum = tmpnum % 10;
     if (fnum != lnum)
     {
-        Console.WriteLine($"Your number is {num}. It is not a Polidrome");
+        Console.WriteLine($"Your number is {num}. It is not a Palidrome");
         break;
     }
     else
@@ -28,6 +28,6 @@ while (digits > 1)
     }
     if (digits <= 1)
     {
-        Console.WriteLine($"Your number is {num}. It is a Polidrome");
+        Console.WriteLine($"Your number is {num}. It is a Palidrome");
     }
 }
