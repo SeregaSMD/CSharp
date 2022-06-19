@@ -85,7 +85,7 @@ Console.WriteLine($"Distance between your points is (with a precision up to 2 di
 Console.Write("Enter a number: ");
 int num = int.Parse(Console.ReadLine());
 int idx = 1;
-Console.WriteLine($"Here we have the squares for a number series ending with the number {num}: ");
+Console.WriteLine($"Here we have the cubes for a number series ending with the number {num}: ");
 if (num>0 && num<2147483647)
 {
     while (idx < num)
