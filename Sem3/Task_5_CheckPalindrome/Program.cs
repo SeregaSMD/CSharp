@@ -1,42 +1,33 @@
-﻿// Напишите программу, которая принимает на вход пятизначное число и проверяет, является ли оно палиндромом.
+﻿// Напишите программу, которая принимает на вход число и проверяет, является ли оно палиндромом (сразу без привязки к 5-значности).
 // Решение через числа
-Console.Write("Enter an integer 5-digit number: ");
+Console.Write("Enter an integer number: ");
 int num = int.Parse(Console.ReadLine());
-
-int digitCount = (int)Math.Log10(num) + 1;
-Console.WriteLine(digitCount);
-
-if (num > 9999 && num < 100000)
+int tmpnum = num;
+int digits = 1;
+while (tmpnum / 10 != 0)
 {
-    int c5 = num % 10;
-    int c4 = (num /10) % 10;
-    int c2 = (num /1000) % 10;
-    int c1 = (num /10000) % 10;
-    if ((c1 == c5) && (c2 == c4))
+    tmpnum = tmpnum / 10;
+    digits++;
+}
+
+tmpnum = num;
+while (digits > 1)
+{
+    int fnum = tmpnum / ((int)Math.Pow(10, digits - 1));
+    int lnum = tmpnum % 10;
+    if (fnum != lnum)
     {
-        Console.WriteLine("Your number is a palindrome");
+        Console.WriteLine($"Your number is {num}. It is not a Polidrome");
+        break;
     }
     else
     {
-        Console.WriteLine("Your number is not a palindrome");
+        tmpnum = tmpnum / 10;
+        digits = digits - 2;
+        tmpnum = tmpnum % ((int)Math.Pow(10, digits));
+    }
+    if (digits <= 1)
+    {
+        Console.WriteLine($"Your number is {num}. It is a Polidrome");
     }
 }
-else
-Console.Write("Your number is not a 5-digit integer. Please enter a correct number.");
-
-// // Решение через строки
-// Console.Write("Enter an a 5-character string: ");
-// String num = Console.ReadLine();
-// if (num.Length == 5)
-// {
-//     if ((num[0] == num[4]) && (num[1] == num[3]))
-//     {
-//         Console.WriteLine("Your string is a palindrome");
-//     }
-//     else
-//     {
-//         Console.WriteLine("Your string is not a palindrome");
-//     }
-// }
-// else
-// Console.Write("Your string is not a 5-character string. Please enter a correct string.");
