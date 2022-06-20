@@ -25,14 +25,12 @@ PrintArray(mass);
 
 int arraySize2 = (mass.Length+1)/2;
 int[] massPair = new int[arraySize2];
-int lastidx = arraySize-1;
 
 massPair[massPair.Length-1]=mass[mass.Length/2];
 
 for (int i = 0; i < mass.Length/2; i++)
 {
-    massPair[i]=mass[i]*mass[lastidx];        
-    lastidx--;    
+    massPair[i]=mass[i]*mass[arraySize-1-i];
 }
 
 Console.Write("Созданный массив пар: ");
