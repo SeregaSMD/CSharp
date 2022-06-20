@@ -1,4 +1,5 @@
-﻿void PrintArray(int[] array)
+﻿//Задайте массив. Напишите программу, которая определяет, присутствует ли заданное число в массиве.
+void PrintArray(int[] array)
 {
     for (int i = 0; i < array.Length; i++)
     {

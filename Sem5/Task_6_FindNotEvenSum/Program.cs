@@ -1,4 +1,5 @@
-﻿void PrintArray(int[] array)
+﻿// Задайте одномерный массив, заполненный случайными числами. Найдите сумму элементов, стоящих на нечётных позициях.
+void PrintArray(int[] array)
 {
     for (int i = 0; i < array.Length; i++)
     {
