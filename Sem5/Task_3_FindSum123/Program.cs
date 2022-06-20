@@ -14,6 +14,7 @@ void FillArray(int[] array)
         array[i] = new Random().Next(0, 200);
     }
 }
+
 int arraySize = 123;
 int[] mass = new int[arraySize];
 FillArray(mass);
