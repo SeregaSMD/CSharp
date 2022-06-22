@@ -83,22 +83,58 @@
 // }
 // ProdTable();
 
-string Replace(string text, char oldValue, char newValue)
+// string Replace(string text, char oldValue, char newValue)
+// {
+//     string result = String.Empty;
+//     int lenght = text.Length;
+//     for (int i=0; i < lenght; i++)
+//     {
+//         if (text[i] == oldValue) result = result + $"{newValue}";
+//         else result = result + $"{text[i]}";
+//     }
+//     return result;
+// }
+
+// string text = "This is a test text.";
+// string newText = Replace(text, ' ', '|');
+// Console.WriteLine(newText);
+// newText = Replace(newText, 't', 'T');
+// Console.WriteLine(newText);
+// newText = Replace(newText, 'T', 'p');
+// Console.WriteLine(newText);
+
+int[] arr = { 1, 5, 4, 3, 2, 6, 7, 1, 1 };
+
+void PrintArray(int[] array)
 {
-    string result = String.Empty;
-    int lenght = text.Length;
-    for (int i=0; i < lenght; i++)
+    for (int i = 0; i < array.Length; i++)
     {
-        if (text[i] == oldValue) result = result + $"{newValue}";
-        else result = result + $"{text[i]}";
+        Console.Write($"{array[i]} ");
     }
-    return result;
+    Console.WriteLine();
+}
+int[] Swap(int idx1, int idx2, int[] array)
+{
+    int tmpval = array[idx1];
+    array[idx1] = array[idx2];
+    array[idx2] = tmpval;
+    return array;
 }
 
-string text = "This is a test text.";
-string newText = Replace(text, ' ', '|');
-Console.WriteLine(newText);
-newText = Replace(newText, 't', 'T');
-Console.WriteLine(newText);
-newText = Replace(newText, 'T', 'p');
-Console.WriteLine(newText);
+void SelectionSort(int[] array)
+{
+    
+    for (int i = 0; i < array.Length-1; i++)
+    {        
+        int minidx = i;
+        for (int j = i+1; j < array.Length; j++)
+        {
+            if (array[j] < array[minidx]) minidx = j;                        
+        }
+        Swap(i, minidx, array);
+    }
+}
+
+PrintArray(arr);
+SelectionSort(arr);
+PrintArray(arr);
