@@ -5,4 +5,4 @@ for (int i=0; i<=A; i++)
 {
     sum += i;
 }
-Console.Write($"Сумма чисел от 1 до А равна: {sum}");
+Console.Write($"Сумма чисел от 0 до {A} равна: {sum}");
