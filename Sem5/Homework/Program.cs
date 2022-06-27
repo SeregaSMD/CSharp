@@ -54,7 +54,7 @@ PrintArray(mass);
 
 int SumNotEven=0;
 
-for (int i = 0; i < mass.Length; i+=2)
+for (int i = 1; i < mass.Length; i+=2)
 {
     SumNotEven+=mass[i];
 }
