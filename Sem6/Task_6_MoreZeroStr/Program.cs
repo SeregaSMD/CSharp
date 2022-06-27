@@ -8,7 +8,9 @@
 }
 
 
-Console.WriteLine("Введите размер массива");
+Console.WriteLine("Введите массив");
+string arrayStr = Console.ReadLine();
+
 int arraylen = int.Parse(Console.ReadLine());
 
 int[] array = new int [arraylen];
