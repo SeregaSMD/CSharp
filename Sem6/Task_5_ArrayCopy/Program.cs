@@ -22,12 +22,9 @@ for (int i=0; i<array.Length; i++)
 {
     arraycopy[i]=array[i];
 }
+// Следует обратить внимание, что команда int [] arraycopy2=array не сработает должным образом, а создаст "ссылку" на исходный массив
 
-int [] arraycopy2=array;
-
+Console.Write("Исходный массив: ");
 PrintArray(array);
+Console.Write("Массив, полученный после поэлементного копирования: ");
 PrintArray(arraycopy);
-PrintArray(arraycopy2);
-array[0]=53;
-PrintArray(array);
-PrintArray(arraycopy2);
