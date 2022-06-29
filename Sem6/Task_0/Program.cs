@@ -105,6 +105,7 @@ FillImage(13,13);
 PrintImgage(pic);
  */
 
+/* 
 int Factorial (int n)
 {
     if (n==1||n==0) return 1;
@@ -116,4 +117,16 @@ Console.WriteLine(Factorial(3));
 for (int i=0; i<40; i++)
 {
     Console.WriteLine($"{i}!={Factorial(i)}");
+}
+ */
+
+double Fibonacci (double n)
+{
+    if (n==1 || n==2) return 1;
+    else return Fibonacci(n-2)+Fibonacci(n-1);
+}
+
+for (int i=1; i<30; i++)
+{
+    Console.WriteLine($"f({i})={Fibonacci(i)}");
 }
