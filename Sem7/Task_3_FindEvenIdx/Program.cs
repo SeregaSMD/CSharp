@@ -29,14 +29,11 @@ for (int i = 0; i < arr.GetLength(0); i++)
 
 void FindEvenIdx (int[,] arr)
 {
-for (int i = 0; i < arr.GetLength(0); i++)
+for (int i = 0; i < arr.GetLength(0); i+=2)
 {
-    for (int j = 0; j < arr.GetLength(1); j++)
+    for (int j = 0; j < arr.GetLength(1); j+=2)
     {
-        if (i%2==0 && j%2==0)
-        {
-            arr[i,j]=arr[i,j]*arr[i,j];
-        }
+        arr[i,j]=arr[i,j]*arr[i,j];        
     }
 }
 }
