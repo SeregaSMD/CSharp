@@ -7,7 +7,6 @@
     Console.WriteLine();
 }
 
-
 Console.Write("Введите десятичное число: ");
 int num10 = int.Parse(Console.ReadLine());
 int tmp = num10;

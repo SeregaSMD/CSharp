@@ -1,4 +1,5 @@
-﻿void PrintArray(int[] array)
+﻿//Пользователь вводит с клавиатуры M чисел. Посчитайте, сколько чисел больше 0 ввёл пользователь.
+void PrintArray(int[] array)
 {
     for (int i = 0; i < array.Length; i++)
     {
@@ -8,24 +9,22 @@
 }
 
 
-Console.WriteLine("Введите массив");
-string arrayStr = Console.ReadLine();
-
-int arraylen = int.Parse(Console.ReadLine());
-
-int[] array = new int [arraylen];
-
-for (int i=0; i<arraylen; i++)
+Console.Write("Введите массив: ");
+string arrayString = Console.ReadLine().Trim(' '); //удалил пробелы, которые юзер мог поставить по ошибке
+string [] arraySplit = arrayString.Split(',', ' ');
+int [] arrayInt = new int [arraySplit.Length] ;
+Console.Write("Введенный массив: ");
+for (int i=0; i<arraySplit.Length; i++)
 {
-    Console.Write($"Введите {i+1} элемент массива: ");
-    array[i]=int.Parse(Console.ReadLine());
+    arrayInt[i]=int.Parse(arraySplit[i]);
+    Console.Write($" {arrayInt[i]}");    
 }
-PrintArray(array);
+Console.WriteLine();
 
 int count=0;
-for (int i=0; i<arraylen; i++)
+for (int i=0; i<arrayInt.Length; i++)
 {
-    if (array[i]>0)
+    if (arrayInt[i]>0)
     {
         count++;
     }    
