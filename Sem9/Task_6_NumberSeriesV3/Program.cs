@@ -5,16 +5,24 @@ int M = int.Parse(Console.ReadLine());
 Console.Write("Введите целочисленное значение N: ");
 int N = int.Parse(Console.ReadLine());
 
-void NumberSeries(int NumberStart, int NumberFinish)
+void NumberSeries(int numberStart, int numberFinish, int direction)
 {
-    if (NumberStart - NumberFinish==0)
+    if (numberStart == numberFinish+direction)
     {
-        return 0;
+        return;
     }
-    Console.WriteLine(NumberStart);
-    NumberSeries(Math.Abs(NumberStart - NumberFinish));
-
+    Console.WriteLine(numberStart);    
+    NumberSeries(numberStart+direction, numberFinish, direction);
+    return;
 }
 
-(N, M) = MinMax(N, M);
-NumberSeries(N, M);
+int growDirection;
+if (M<N)
+{
+    growDirection = 1;
+}
+else
+{
+    growDirection = -1;
+}
+NumberSeries(M, N, growDirection);

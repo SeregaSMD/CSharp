@@ -4,10 +4,11 @@ Console.Write("Введите целочисленное значение N: ");
 int N = int.Parse(Console.ReadLine());
  void NumberSeries (int Number)
  {
-    if (Number==0)    return; 
-    
+    if (Number==0)
+    {
+      return; 
+    }    
     NumberSeries(Number-1);
-    Console.WriteLine(Number);
-    
+    Console.WriteLine(Number);    
  }
  NumberSeries(N);

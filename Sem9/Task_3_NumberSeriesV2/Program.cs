@@ -25,7 +25,6 @@ void NumberSeries(int NumberStart, int NumberFinish)
     }
     Console.WriteLine(NumberStart);
     NumberSeries(NumberStart + 1, NumberFinish);
-
 }
 
 (N, M) = MinMax(N, M);
