@@ -1,6 +1,4 @@
-﻿// Задайте двумерный массив размером m×n, заполненный случайными целыми числами.
-
-
+﻿// Задайте двумерный массив. Найдите сумму элементов, находящихся на главной диагонали (с индексами (0,0); (1;1) и т.д.
 
 void Print(int[,] arr)
 {
@@ -37,9 +35,11 @@ int DiagSum(int[,] arr)
     return diagSum;
 }
 
-
-int m = 3, n = 4;
-int[,] mass = new int[m, n];
+Console.Write("Введите количество строк в массиве: ");
+int row = int.Parse(Console.ReadLine());
+Console.Write("Введите количество столбцов в массиве: ");
+int col = int.Parse(Console.ReadLine());
+int[,] mass = new int[row, col];
 Fill(mass);
 Print(mass);
 Console.WriteLine();

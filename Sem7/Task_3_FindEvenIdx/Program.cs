@@ -1,7 +1,10 @@
-﻿// Задайте двумерный массив размером m×n, заполненный случайными целыми числами.
+﻿// Задайте двумерный массив. Найдите элементы, у которых оба индекса чётные, и замените эти элементы на их квадраты.
 
-int m = 3, n = 4;
-int[,] mass = new int[m, n];
+Console.Write("Введите количество строк в массиве: ");
+int row = int.Parse(Console.ReadLine());
+Console.Write("Введите количество столбцов в массиве: ");
+int col = int.Parse(Console.ReadLine());
+int[,] mass = new int[row, col];
 
 void Print(int[,] arr)
 {

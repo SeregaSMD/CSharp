@@ -23,9 +23,11 @@ for (int i = 0; i < arr.GetLength(0); i++)
     }
 }
 }
-
-int m = 6, n = 6;
-int[,] mass = new int[m, n];
+Console.Write("Введите количество строк в массиве: ");
+int row = int.Parse(Console.ReadLine());
+Console.Write("Введите количество столбцов в массиве: ");
+int col = int.Parse(Console.ReadLine());
+int[,] mass = new int[row, col];
 
 Fill(mass);
 Print(mass);
