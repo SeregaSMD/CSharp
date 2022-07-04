@@ -1,33 +1,32 @@
 ﻿// Задайте значения M и N. Напишите программу, которая найдёт сумму натуральных элементов в промежутке от M до N.
 
-
 Console.Write("Введите целочисленное значение M: ");
 int M = int.Parse(Console.ReadLine());
 Console.Write("Введите целочисленное значение N: ");
 int N = int.Parse(Console.ReadLine());
 
-(int NumberStart, int NumberFinish) MinMax(int NumberStart, int NumberFinish)
+(int numberStart, int numberFinish) MinMax(int numberStart, int numberFinish)
 {
     int tmp;
-    if (NumberStart > NumberFinish)
+    if (numberStart > numberFinish)
     {
-        tmp = NumberStart;
-        NumberStart = NumberFinish;
-        NumberFinish = tmp;
+        tmp = numberStart;
+        numberStart = numberFinish;
+        numberFinish = tmp;
     }
-    return (NumberStart, NumberFinish);
+    return (numberStart, numberFinish);
 }
 
-void NumberSeries(int NumberStart, int NumberFinish)
+int SumAB(int numberStart, int numberFinish)
 {
-    if (NumberStart > NumberFinish)
+    int sumAB=0;
+    if (numberStart > numberFinish)
     {
-        return;
+        return 0;
     }
-    Console.WriteLine(NumberStart);
-    NumberSeries(NumberStart + 1, NumberFinish);
-
+    Console.WriteLine(numberStart);
+    return sumAB=SumAB(numberStart+1, numberFinish)+numberStart;
 }
 
 (N, M) = MinMax(N, M);
-NumberSeries(N, M);
+Console.Write(SumAB(N, M));
