@@ -45,8 +45,8 @@ FillArray(matrix);
 Console.WriteLine();
 PrintArray(matrix);
  */
-
-/* 
+ 
+ 
  int[,] pic = new int[,]
 {
  {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
@@ -73,7 +73,6 @@ PrintArray(matrix);
  {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0 },
  {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
 };
-
 
 void PrintImgage(int[,] image)
 {
@@ -103,7 +102,7 @@ void FillImage(int row, int col)
 PrintImgage(pic);
 FillImage(13,13);
 PrintImgage(pic);
- */
+
 
 /* 
 int Factorial (int n)
@@ -112,13 +111,12 @@ int Factorial (int n)
     else return n*Factorial(n-1);
 }
 
-Console.WriteLine(Factorial(3));
-
 for (int i=0; i<40; i++)
 {
     Console.WriteLine($"{i}!={Factorial(i)}");
 }
  */
+
 /* 
 double Fibonacci (double n)
 {
