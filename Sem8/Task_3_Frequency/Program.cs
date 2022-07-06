@@ -22,34 +22,25 @@ void PrintArray(int[,] arr)
     }
 }
 
-void CountFrequency(int[,] arr, int element)
+bool CheckRepeat(int[,] arr, int elemPos, int elemVal)
 {
-    int counter = 0;
-    for (int i = 0; i < arr.GetLength(0); i++)
+    int pos = 0;
+    foreach (int element in arr)
     {
-        for (int j = 0; j < arr.GetLength(0); j++)
-        {
-            if (arr[i, j] == element) counter++;
-        }
-
-    }
-    Console.WriteLine($"{element} встречается {counter} раз");
-}
-
-bool CheckArray(int[,] arr, int idx, int elem)
-{
-    int counter = 0;
-    for (int i = 0; i < arr.GetLength(0); i++)
-    {
-
-        for (int j = 0; j < arr.GetLength(1); j++)
-        {
-            if (counter==idx) return true;
-            if (arr[i, j] == elem) return false;
-            counter++;
-        }
+        if (element == elemVal && pos < elemPos) return false;
+        pos++;
     }
     return true;
+}
+
+void CountFrequency(int[,] arr, int elemVal)
+{
+    int counter = 0;
+    foreach (int element in arr)
+    {
+        if (element == elemVal) counter++;
+    }
+    Console.WriteLine($"{elemVal} встречается {counter} раз");
 }
 
 Console.Write("Введите кол-во строк: ");
@@ -58,13 +49,13 @@ Console.Write("Введите кол-во столбцов: ");
 int columns = int.Parse(Console.ReadLine());
 int[,] array = new int[rows, columns];
 FillArray(array);
+
 Console.WriteLine("Исходный массив:");
 PrintArray(array);
-int counter=0;
-foreach (int elem in array)
-{
-    if (CheckArray(array, counter, elem)) CountFrequency(array, elem);
-    counter++;
-}
 
-// создать отдельный массив с уникальными элементами
+int position = 0;
+foreach (int element in array)
+{
+    if (CheckRepeat(array, position, element)) CountFrequency(array, element);
+    position++;
+}
