@@ -34,8 +34,6 @@ void SwapRows(int [,] arr, int row1, int row2)
     }
 }
 
-string s;
-
 Console.Write("Введите кол-во строк: ");
 int rows = int.Parse(Console.ReadLine());
 Console.Write("Введите кол-во столбцов: ");
