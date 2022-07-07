@@ -5,7 +5,7 @@ void FillArray(int[,] arr)
     {
         for (int j = 0; j < arr.GetLength(1); j++)
         {
-            arr[i, j] = new Random().Next(0, 100);
+            arr[i, j] = new Random().Next(0, 10);
         }
     }
 }
@@ -34,16 +34,16 @@ bool CheckRepeat(int[,] arr, int elemPos, int elemVal)
 }
 
 (int, int) Pos2Idx2D(int[,] array, int position)
-{
+{    
     int idx1 = (position - 1) / array.GetLength(1);
-    int idx2 = ((position - 1) % array.GetLength(0));
+    int idx2 = ((position - 1) % array.GetLength(1));
     return (idx1, idx2);
 }
 
 int Pos2Val2D(int[,] array, int position)
-{
+{    
     int idx1 = (position - 1) / array.GetLength(1);
-    int idx2 = ((position - 1) % array.GetLength(0));
+    int idx2 = ((position - 1) % array.GetLength(1));
     return array[idx1, idx2];
 }
 
@@ -63,11 +63,11 @@ void ArraySort(int[,] arr)
                 minPosition = position;
             }
         }
-        if (sortingPosition != minPosition) SwapElement(arr, sortingPosition, minPosition);
+        if (sortingPosition != minPosition) Swap(arr, sortingPosition, minPosition);
     }
 }
 
-void SwapElement(int[,] arr, int position1, int position2)
+void Swap(int[,] arr, int position1, int position2)
 {
     (int pos1idx1, int pos1idx2) = Pos2Idx2D(arr, position1);
     (int pos2idx1, int pos2idx2) = Pos2Idx2D(arr, position2);
@@ -95,13 +95,13 @@ FillArray(array);
 
 Console.WriteLine("Исходный массив:");
 PrintArray(array);
-Console.WriteLine("Сортированный массив:" + array.GetLength(0));
+Console.WriteLine("Сортированный массив:");
 ArraySort(array);
 PrintArray(array);
 
-/* int position = 0;
+int position = 0;
 foreach (int element in array)
 {
     if (CheckRepeat(array, position, element)) CountFrequency(array, element);
     position++;
-} */
+}
