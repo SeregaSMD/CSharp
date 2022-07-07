@@ -11,34 +11,13 @@ void Print(int[,] arr)
     }
 }
 
-(int, int, int) FillRow(int[,] arr, int startX, int startY, int lenght, int counter)
-{
-    for (int i = startX; i < startX + lenght; i++)
-    {
-        arr[startY, i] = counter;
-        counter++;
-    }
-    return (startX+1, startY + lenght - 1, counter);
-}
-
-(int, int, int) FillCol(int[,] arr, int startX, int startY, int lenght, int counter)
-{
-    for (int j = 0; j < startY + lenght; j++)
-    {
-        arr[j, startX] = counter;
-        counter++;
-    }
-    return (startX + lenght - 1, startY, counter);
-}
-
-
 Console.Write("Введите количество строк в массиве: ");
 int row = int.Parse(Console.ReadLine());
 Console.Write("Введите количество столбцов в массиве: ");
 int col = int.Parse(Console.ReadLine());
 int[,] mass = new int[row, col];
-int lenghtX = mass.GetLength(0);
-int lenghtY = mass.GetLength(1) - 1;
+int lenghtX = mass.GetLength(1)-1;
+int lenghtY = mass.GetLength(0)-2;
 int counter = 1;
 int startX = 0;
 int startY = 0;
@@ -50,19 +29,55 @@ Console.WriteLine($"startY={startY}");
 Console.WriteLine($"counter={counter}");
 Console.WriteLine($"lenghtX={lenghtX}");
 Console.WriteLine($"lenghtY={lenghtY}");
-//while (counter<16)
 
-(finishX, finishY, counter) = FillRow(mass, startX, startY, lenghtX, counter);
+(int, int, int) FillRight(int[,] arr, int startX, int startY, int lenght, int counter)
+{
+    for (int i = startY; i < startY + lenght; i++)
+    {
+        arr[startX, i] = counter;
+        counter++;
+    }
+    return (startX+1, startY + lenght, counter);
+}
+
+(int, int, int) FillDown(int[,] arr, int startX, int startY, int lenght, int counter)
+{
+    for (int i = startX; i < startX + lenght; i++)
+    {
+        arr[i, startY] = counter;
+        counter++;
+    }
+    return (startX+lenght, startY-1, counter);
+}
+
+(int, int, int) FillLeft(int[,] arr, int startX, int startY, int lenght, int counter)
+{
+    for (int i = startY; i > startY - lenght; i--)
+    {
+        arr[startX, i] = counter;
+        counter++;
+    }
+    return (startX-1, startY + lenght+1, counter);
+}
+
+(int, int, int) FillUp(int[,] arr, int startX, int startY, int lenght, int counter)
+{
+    for (int i = startY; i < startY + lenght; i++)
+    {
+        arr[startX, i] = counter;
+        counter++;
+    }
+    return (startX, startY + lenght, counter);
+}
+while (counter <17)
+{
+(finishX, finishY, counter) = FillRight(mass, startX, startY, lenghtX, counter);
 lenghtX--;
-lenghtX = lenghtX * -1;
-Console.WriteLine($"finishX={finishX}");
-Console.WriteLine($"finishY={finishY}");
-Console.WriteLine($"counter={counter}");
-Console.WriteLine($"lenghtX={lenghtX}");
-Console.WriteLine($"lenghtY={lenghtY}");
-Print(mass);
-(finishX, finishY, counter) = FillCol(mass, finishX, finishY, lenghtY, counter);
+(finishX, finishY, counter) = FillDown(mass, finishX, finishY, lenghtY, counter);
 lenghtY--;
-lenghtX = lenghtX * -1;
-
+(finishX, finishY, counter) = FillLeft(mass, finishX, finishY, lenghtX, counter);
+lenghtX--;
+(finishX, finishY, counter) = FillUp(mass, finishX, finishY, lenghtY, counter);
+lenghtY--;
+}
 Print(mass);
