@@ -23,10 +23,9 @@ int SumAB(int numberStart, int numberFinish)
     if (numberStart > numberFinish)
     {
         return 0;
-    }
-    Console.WriteLine(numberStart);
+    }    
     return sumAB=SumAB(numberStart+1, numberFinish)+numberStart;
 }
 
 (N, M) = MinMax(N, M);
-Console.Write(SumAB(N, M));
+Console.Write($"Сумма ряда от {N} до {M} равна {SumAB(N, M)}");
