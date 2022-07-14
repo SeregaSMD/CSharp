@@ -1,4 +1,4 @@
-﻿// Задайте двумерный массив. Напишите программу, которая заменяет строки на столбцы. В случае, если это невозможно, программа должна вывести сообщение для пользователя.
+﻿// Задайтедвумерный массив из целых чисел. Напишите программу, которая удалит строку и столбец, на пересечении которых расположен наименьший элемент массива.
 void FillArray(int[,] arr)
 {
     for (int i = 0; i < arr.GetLength(0); i++)
@@ -22,48 +22,60 @@ void PrintArray(int[,] arr)
     }
 }
 
-int FindMin(int[,] arr)
+(int minIdx1, int minIdx2) FindMinIdx(int[,] arr)
 {
     int minval = arr[0, 0];
-    int minidx1=0;
-    int minidx2=0;
+    int minIdx1 = 0;
+    int minIdx2 = 0;
     for (int i = 0; i < arr.GetLength(0); i++)
     {
         for (int j = 0; j < arr.GetLength(1); j++)
         {
-            if (minval > arr[i, j]) { minval = arr[i, j];}
+            if (minval > arr[i, j])
+            {
+                minval = arr[i, j];
+                minIdx1 = i;
+                minIdx2 = j;
+            }
         }
     }
-    return minval;
+    return (minIdx1, minIdx2);
 }
 
-//как забрать i, j
-(int, int) FindIdx (int[,] arr, int value)
+int[,] DelRowCol(int[,] arr, int idx1, int idx2)
 {
+    int correctorI = 0;
+    int correctorJ = 0;
+    int[,] newArray = new int[arr.GetLength(0) - 1, arr.GetLength(1) - 1];
     for (int i = 0; i < arr.GetLength(0); i++)
     {
+        correctorJ = 0;
+        for (int j = 0; j < arr.GetLength(1); j++)
+        {
+            if (i != idx1 && j != idx2)
+            {
+                newArray[i - correctorI, j - correctorJ] = arr[i, j];
+            }
+            if (j == idx2) correctorJ = 1;
+            if (i == idx1) correctorI = 1;
+        }
 
-    for (int j = 0; j < arr.GetLength(1); j++)
-    {
-        if (arr[i, j] == value)
-        Console.WriteLine($"Индексы минимального значения i={i} и j={j}");
-        return (i, j);        
     }
-    }    
+    return newArray;
 }
 
 
-Console.Write("Введите кол-во строк: ");
-int rows = int.Parse(Console.ReadLine());
-Console.Write("Введите кол-во столбцов: ");
-int columns = int.Parse(Console.ReadLine());
-int[,] array = new int[rows, columns];
-FillArray(array);
-Console.WriteLine("Исходный массив:");
-PrintArray(array);
-Console.WriteLine($"Минимальное число в массиве: {FindMin(array)}");
-int deleterow;
-int deletecol;
-(deleterow, deletecol)=FindIdx
 
+    Console.Write("Введите кол-во строк: ");
+    int rows = int.Parse(Console.ReadLine());
+    Console.Write("Введите кол-во столбцов: ");
+    int columns = int.Parse(Console.ReadLine());
+    int[,] array = new int[rows, columns];
+    FillArray(array);
+    Console.WriteLine("Исходный массив:");
+    PrintArray(array);
+    (int minIdx1, int minIdx2) = FindMinIdx(array);
+    Console.WriteLine($"Индексы минимального элемента: {minIdx1} и {minIdx2}");
+    int [,] result = DelRowCol(array, minIdx1, minIdx2);
+    PrintArray(result);
 
