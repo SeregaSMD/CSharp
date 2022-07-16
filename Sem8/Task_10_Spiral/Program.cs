@@ -1,4 +1,4 @@
-﻿// Заполните двумерный массив спирально .
+﻿// Заполните двумерный массив спирально, начиная с 10 с шагом 1 (т.е. 10, 11, 12 и т.д.).
 void PrintArray(int[,] arr)
 {
     for (int i = 0; i < arr.GetLength(0); i++)
@@ -61,7 +61,6 @@ int lenghtY = mass.GetLength(0)-2;
 int counter = 0;
 int startX = 0;
 int startY = 0;
-PrintArray(mass);
 
 while (counter<row*col)
 {
@@ -82,9 +81,4 @@ startY-=lenghtY;
 startX++;
 lenghtY--;
 }
-
 PrintArray(mass);
-Console.WriteLine(startX);
-Console.WriteLine(startY);
-Console.WriteLine(lenghtX);
-Console.WriteLine(lenghtY);
