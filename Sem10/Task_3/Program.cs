@@ -16,8 +16,8 @@ string[] Words (string [] alf, int number)
 return result;
     
     string [] temp = Words (alf,number-1);
-    string [] = new string [temp.Length*alf.Length]
-    return Words(alf, number)+
+    string [] result = new string [temp.Length*alf.Length];
+    return Words(alf, number);
 }
 
 string [] alf = {"а", "с", "и", "в"};
