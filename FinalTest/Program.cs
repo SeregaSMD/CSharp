@@ -1,4 +1,5 @@
-﻿string[] EnterArray()
+﻿using System;
+string[] EnterArray()
 {
     if (File.Exists("data.txt"))
     {
