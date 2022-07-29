@@ -1,5 +1,5 @@
-﻿// Задайте двумерный массив размером m×n, заполненный случайными целыми числами.
-void Print(int[,] arr)
+﻿// Заполните двумерный массив спирально, начиная с 10 с шагом 1 (т.е. 10, 11, 12 и т.д.).
+void PrintArray(int[,] arr)
 {
     for (int i = 0; i < arr.GetLength(0); i++)
     {
@@ -11,6 +11,46 @@ void Print(int[,] arr)
     }
 }
 
+int FillRowRight(int[,] arr, int startX, int startY, int lenght, int counter)
+{
+    for (int j = startX; j <= startX + lenght; j++)
+    {
+        arr[startY, j] = counter;
+        counter++;
+    }
+    return counter;
+}
+
+int FillRowLeft(int[,] arr, int startX, int startY, int lenght, int counter)
+{
+    for (int j = startX; j >= startX - lenght; j--)
+    {
+        arr[startY, j] = counter;
+        counter++;
+    }
+    return counter;
+}
+
+int FillColUp(int[,] arr, int startX, int startY, int lenght, int counter)
+{
+    for (int i = startY; i >= startY - lenght; i--)
+    {
+        arr[i, startX] = counter;
+        counter++;
+    }
+    return counter;
+}
+
+int FillColDown(int[,] arr, int startX, int startY, int lenght, int counter)
+{
+    for (int i = startY; i <= startY + lenght; i++)
+    {
+        arr[i, startX] = counter;
+        counter++;
+    }
+    return counter;
+}
+
 Console.Write("Введите количество строк в массиве: ");
 int row = int.Parse(Console.ReadLine());
 Console.Write("Введите количество столбцов в массиве: ");
@@ -18,66 +58,27 @@ int col = int.Parse(Console.ReadLine());
 int[,] mass = new int[row, col];
 int lenghtX = mass.GetLength(1)-1;
 int lenghtY = mass.GetLength(0)-2;
-int counter = 1;
+int counter = 0;
 int startX = 0;
 int startY = 0;
-int finishX = 0;
-int finishY = 0;
-Print(mass);
-Console.WriteLine($"startX={startX}");
-Console.WriteLine($"startY={startY}");
-Console.WriteLine($"counter={counter}");
-Console.WriteLine($"lenghtX={lenghtX}");
-Console.WriteLine($"lenghtY={lenghtY}");
 
-(int, int, int) FillRight(int[,] arr, int startX, int startY, int lenght, int counter)
+while (counter<row*col)
 {
-    for (int i = startY; i < startY + lenght; i++)
-    {
-        arr[startX, i] = counter;
-        counter++;
-    }
-    return (startX+1, startY + lenght, counter);
-}
-
-(int, int, int) FillDown(int[,] arr, int startX, int startY, int lenght, int counter)
-{
-    for (int i = startX; i < startX + lenght; i++)
-    {
-        arr[i, startY] = counter;
-        counter++;
-    }
-    return (startX+lenght, startY-1, counter);
-}
-
-(int, int, int) FillLeft(int[,] arr, int startX, int startY, int lenght, int counter)
-{
-    for (int i = startY; i > startY - lenght; i--)
-    {
-        arr[startX, i] = counter;
-        counter++;
-    }
-    return (startX-1, startY + lenght+1, counter);
-}
-
-(int, int, int) FillUp(int[,] arr, int startX, int startY, int lenght, int counter)
-{
-    for (int i = startY; i < startY + lenght; i++)
-    {
-        arr[startX, i] = counter;
-        counter++;
-    }
-    return (startX, startY + lenght, counter);
-}
-while (counter <17)
-{
-(finishX, finishY, counter) = FillRight(mass, startX, startY, lenghtX, counter);
+counter=FillRowRight(mass,startX,startY,lenghtX,counter);
+startX+=lenghtX;
+startY++;
 lenghtX--;
-(finishX, finishY, counter) = FillDown(mass, finishX, finishY, lenghtY, counter);
+counter=FillColDown(mass,startX,startY,lenghtY,counter);
+startY+=lenghtY;
+startX--;
 lenghtY--;
-(finishX, finishY, counter) = FillLeft(mass, finishX, finishY, lenghtX, counter);
+counter=FillRowLeft(mass,startX,startY,lenghtX,counter);
+startX-=lenghtX;
+startY--;
 lenghtX--;
-(finishX, finishY, counter) = FillUp(mass, finishX, finishY, lenghtY, counter);
+counter=FillColUp(mass,startX,startY,lenghtY,counter);
+startY-=lenghtY;
+startX++;
 lenghtY--;
 }
-Print(mass);
+PrintArray(mass);
