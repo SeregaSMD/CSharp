@@ -28,13 +28,13 @@ void PrintArray(int[,] arr)
 
 void ArraySortRow(int[,] arr, int row)
 {
-    int maxVal = 0;
-    int maxIdx = 0;
-    int tmp = 0;
-    for (int counter = 0; counter < arr.GetLength(1); counter++)
+    int maxIdx = 0;    
+    int maxVal = arr[row,maxIdx];
+    for (int i = 0; i < arr.GetLength(1)-1; i++)
     {
-        maxVal = arr[row, counter];
-        for (int j = counter; j < arr.GetLength(1); j++)
+        maxIdx=i;
+        maxVal = arr[row, i];
+        for (int j = i+1; j < arr.GetLength(1); j++)
         {
             if (arr[row, j] > maxVal)
             {
@@ -42,7 +42,10 @@ void ArraySortRow(int[,] arr, int row)
                 maxVal = arr[row, j];
             }
         }
-        Swap(arr, counter, maxIdx, row);
+        if (maxIdx!=i)
+        {
+            Swap(arr, i, maxIdx, row);
+        }
     }
 }
 
